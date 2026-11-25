@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily time limit — Enough YouTube</title>
+  <style>
+    body { font: 1rem/1.6 system-ui, sans-serif; background: #f5f9ff; color: #23324a; margin: 0; padding: 32px 20px; }
+    main { max-width: 520px; margin: auto; }
+    h1 { color: #2e7d32; }
+    h2 { margin-top: 36px; font-size: 1.2rem; }
+    label { display: block; font-weight: bold; margin-top: 20px; }
+    input { display: block; padding: 10px; margin: 8px 0; width: 160px; font: inherit; }
+    button { padding: 10px 18px; margin: 12px 8px 0 0; font: inherit; cursor: pointer; }
+    [role="status"] { min-height: 1.6em; }
+    [hidden] { display: none !important; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Daily time limit</h1>
+    <p>For grown-ups: choose how long YouTube can be watched each day. The time is shared across YouTube and YouTube Kids and resets at midnight.</p>
+    <form id="settings">
+      <label for="minutes">Daily allowance in minutes</label>
+      <input id="minutes" name="minutes" type="number" min="1" max="1440" step="1" value="60" required aria-describedby="hint" disabled>
+      <p id="hint">Default: 60 minutes (one hour). Changes keep today’s recorded watching time.</p>
+      <div id="pin-check" hidden>
+        <label for="pin">Parent PIN</label>
+        <input id="pin" name="pin" type="password" inputmode="numeric" autocomplete="off" pattern="\d{4,8}" maxlength="8" disabled>
+      </div>
+      <button id="save" type="submit" disabled>Save</button>
+      <button id="reset" type="button" disabled>Reset to one hour</button>
+    </form>
+    <p id="status" role="status" aria-live="polite"></p>
+
+    <h2>Parent PIN</h2>
+    <p id="pin-state">Set a PIN so children cannot change the limit themselves.</p>
+    <form id="pin-form">
+      <div id="current-pin-row" hidden>
+        <label for="current-pin">Current PIN</label>
+        <input id="current-pin" type="password" inputmode="numeric" autocomplete="off" pattern="\d{4,8}" maxlength="8">
+      </div>
+      <label for="new-pin">New PIN (4 to 8 digits)</label>
+      <input id="new-pin" type="password" inputmode="numeric" autocomplete="off" pattern="\d{4,8}" maxlength="8" required>
+      <button id="set-pin" type="submit" disabled>Set PIN</button>
+      <button id="remove-pin" type="button" hidden>Remove PIN</button>
+    </form>
+    <p id="pin-status" role="status" aria-live="polite"></p>
+  </main>
+  <script src="ext.js"></script>
+  <script src="settings.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>

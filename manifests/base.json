@@ -1,0 +1,44 @@
+{
+  "manifest_version": 3,
+  "name": "Enough YouTube",
+  "version": "1.0",
+  "description": "A kind daily limit for YouTube: one hour a day, then a friendly reminder that it is time to study, read or play.",
+  "permissions": [
+    "tabs",
+    "storage",
+    "alarms"
+  ],
+  "host_permissions": [
+    "*://*.youtube.com/*",
+    "*://youtube.com/*",
+    "*://*.youtu.be/*",
+    "*://youtu.be/*",
+    "*://*.youtube-nocookie.com/*",
+    "*://youtube-nocookie.com/*",
+    "*://*.youtubekids.com/*",
+    "*://youtubekids.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.youtube.com/*",
+        "*://youtube.com/*",
+        "*://*.youtu.be/*",
+        "*://youtu.be/*",
+        "*://*.youtube-nocookie.com/*",
+        "*://youtube-nocookie.com/*",
+        "*://*.youtubekids.com/*",
+        "*://youtubekids.com/*"
+      ],
+      "js": [
+        "ext.js",
+        "settings.js",
+        "timer-debug.js"
+      ]
+    }
+  ],
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  }
+}
